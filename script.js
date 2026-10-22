@@ -52,7 +52,7 @@ const CONFIG = {
 
   // Live notifications to your phone via https://ntfy.sh (install the ntfy app and
   // subscribe to this topic). Add ?quiet to the page URL to test without notifying.
-  ntfy: { enabled: true, topic: "sumy-zafer-967767b215" },
+  ntfy: { enabled: true, topic: "for-sumyuktha-6e4019574794" },
 };
 
 /* ==========================================================
@@ -261,6 +261,7 @@ $("startBtn").addEventListener("click", () => {
    ========================================================== */
 let qIndex = 0;
 let score = 0;
+const picked = []; // her chosen answer text for each question (for the WhatsApp reply)
 
 /** Build options for the live "distance" and "time" questions. */
 function buildDynamic(item) {
@@ -319,6 +320,7 @@ function answer(i) {
   const isTrick = correct === "all";
   const ok = isTrick || i === correct;
   if (ok) score++;
+  picked[qIndex] = options[i];
 
   const btns = [...$("qOptions").children];
   btns.forEach((b, j) => {
@@ -480,7 +482,12 @@ function renderSuccess() {
 
   if (CONFIG.whatsapp.number) {
     const wa = $("waBtn");
-    wa.href = `https://wa.me/${CONFIG.whatsapp.number.replace(/\D/g, "")}?text=${encodeURIComponent(fill(CONFIG.whatsapp.text))}`;
+    const reply = [
+      fill(CONFIG.whatsapp.text),
+      `My quiz score: ${score}/${QUESTIONS.length}`,
+      ...picked.map((a, n) => `${n + 1}. ${a}`),
+    ].join("\n");
+    wa.href = `https://wa.me/${CONFIG.whatsapp.number.replace(/\D/g, "")}?text=${encodeURIComponent(reply)}`;
     wa.hidden = false;
   }
 
