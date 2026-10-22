@@ -23,8 +23,8 @@ const CONFIG = {
 
   // The event. date + time are the wall-clock time in event.tz (any IANA zone).
   event: {
-    date: "2026-11-05",          // YYYY-MM-DD
-    time: "21:00",               // 24h HH:MM
+    date: "2026-10-22",          // YYYY-MM-DD
+    time: "22:29",               // 24h HH:MM
     tz: "Asia/Muscat",           // the zone that date/time is written in
     durationMinutes: 120,
     calendarTitle: "Video-call date: Sumyuktha & Zafer 💖",
