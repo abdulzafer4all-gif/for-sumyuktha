@@ -47,7 +47,7 @@ const CONFIG = {
   // WhatsApp: digits only with country code. Set number to "" to hide the button.
   whatsapp: {
     number: "96894194177",
-    text: "YES! 💖 It's a date. See you on video call on {herDate} at {herTime} my time 🥰",
+    text: "YES! 💖 It's a date.",
   },
 
   // Live notifications to your phone via https://ntfy.sh (install the ntfy app and
